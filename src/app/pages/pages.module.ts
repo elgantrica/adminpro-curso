@@ -19,6 +19,7 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { CommonModule } from '@angular/common';
 
 import { KeysPipe } from '../pipes/keys.pipe';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { KeysPipe } from '../pipes/keys.pipe';
         Graficas1Component,
         IncrementadorComponent,
         GraficoDonaComponent,
-        KeysPipe
+        KeysPipe,
+        AccountSettingsComponent
     ],
     imports: [  CommonModule,
         SharedModule,

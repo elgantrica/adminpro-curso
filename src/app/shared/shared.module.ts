@@ -3,6 +3,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { NpagefoundComponent } from './npagefound/npagefound.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -11,7 +13,10 @@ import { NpagefoundComponent } from './npagefound/npagefound.component';
         SidebarComponent,
         BreadcrumbsComponent
     ],
-    imports: [],
+    imports: [
+        RouterModule,
+        CommonModule
+    ],
     exports: [
         NpagefoundComponent,
         HeaderComponent,
