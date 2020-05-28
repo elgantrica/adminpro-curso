@@ -20,6 +20,8 @@ import { CommonModule } from '@angular/common';
 
 import { KeysPipe } from '../pipes/keys.pipe';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         IncrementadorComponent,
         GraficoDonaComponent,
         KeysPipe,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
     imports: [  CommonModule,
         SharedModule,
