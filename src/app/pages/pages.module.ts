@@ -13,6 +13,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 
+// Pipe module
+import { PipesModule } from '../pipes/pipes.module';
+
+
 // temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
@@ -22,6 +26,7 @@ import { KeysPipe } from '../pipes/keys.pipe';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -34,6 +39,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonaComponent,
         KeysPipe,
         AccountSettingsComponent,
+        ProfileComponent,
         PromesasComponent,
         RxjsComponent
     ],
@@ -41,14 +47,14 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         SharedModule,
         PagesRoutingModule,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule
      ],
-    
     exports: [
         PagesComponent,
         DashboardComponent,
         ProgressComponent,
-        Graficas1Component,
+        Graficas1Component
     ],
     providers: [],
 })
