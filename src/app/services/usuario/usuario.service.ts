@@ -20,9 +20,7 @@ export class UsuarioService {
   constructor( public http: HttpClient,
                public router: Router,
                public _subirArchivoService: SubirArchivoService) { 
-    this.cargaStorage();
-    console.log('Servicio de usuario listo');
-    
+    this.cargaStorage();    
   }
   estaLogueado(){
     return ( this.token.length > 5) ? true : false;
@@ -34,6 +32,7 @@ export class UsuarioService {
     } else {
       this.token = '';
       this.usuario = null;
+
     }
 
   }
@@ -82,6 +81,20 @@ export class UsuarioService {
 
 
   }
+  cargarUsuarios( desde: number = 0){
+    let url = `${URL_SERVICIOS}/usuario?desde=${desde}`;
+    return this.http.get(url);
+
+  }
+  buscarUsuarios( termino: string){
+    let url = `${URL_SERVICIOS}/busqueda/coleccion/usuarios/${termino}`;
+    return this.http.get(url)
+            .pipe( map( (resp: any) => {
+              return resp.usuarios;
+
+            }));
+
+  }
 
   crearUsuario( usuario: Usuario) {
 
@@ -101,14 +114,32 @@ export class UsuarioService {
 
 
   }
+  borrarUsuario( usuario: Usuario) {
+    let url = `${URL_SERVICIOS}/usuario/${usuario._id}`;
+    url += `?token=${this.token}`;
+    return this.http.delete(url)
+            .pipe(
+              map( resp => {
+                Swal.fire(
+                  'Usuario Borrado',
+                  usuario.email,
+                  'success'
+                );
+                return true;
+              })
+            );
+  }
   actualizarUsuario( usuario: Usuario) {
     let url = `${URL_SERVICIOS}/usuario/${usuario._id}`;
     url += `?token=${this.token}`;
     return this.http.put(url, usuario)
             .pipe(
               map( (resp: any) => {
-                let usuarioDB: Usuario = resp.usuario;
-                this.guardarStorage( usuarioDB._id, this.token, usuarioDB);
+                if ( usuario._id === this.usuario._id ) {
+                  let usuarioDB: Usuario = resp.usuario;
+                  this.guardarStorage( usuarioDB._id, this.token, usuarioDB);
+                }
+
                 Swal.fire(
                   'Usuario Actualizado',
                   usuario.email,
