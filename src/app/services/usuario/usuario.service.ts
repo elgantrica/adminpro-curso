@@ -5,7 +5,6 @@ import { URL_SERVICIOS } from 'src/app/config/config';
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { SubirArchivoService } from '../subir-Archivo/subir-archivo.service';
 
 
