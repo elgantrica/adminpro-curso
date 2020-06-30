@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="alert alert-info container-fluid animated fadeIn" *ngIf="usuarios.length === 0 && medicos.length === 0 && hospitales.length === 0"> No hay registros</div>
+    <div class="col-4" *ngIf="usuarios.length > 0">
+        <div class="card animated fadeIn">
+            <div class="card-body">
+                <h4 class="card-title"> Usuarios</h4>
+
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios" [routerLink]="['/usuarios']" class="pointer">
+                            <th> <img [src]="usuario.img | imagen" class="img-50 img-circle"> </th>
+                            <th> {{ usuario.nombre }} </th>
+                            <th>
+                                <button class="btn btn-primary" type="button"> <i class="fa fa-edit"></i> </button>
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4" *ngIf="medicos.length > 0">
+        <div class="card animated fadeIn">
+            <div class="card-body">
+                <h4 class="card-title"> Medicos</h4>
+
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let medico of medicos" [routerLink]="['/medico', medico._id]" class="pointer">
+                            <th><img [src]="medico.img | imagen:'medicos'" class="img-50 img-circle"> </th>
+                            <th> {{ medico.nombre }} </th>
+                            <th>
+                                <button class="btn btn-primary" type="button"> <i class="fa fa-edit"></i> </button>
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-4" *ngIf="hospitales.length > 0">
+        <div class="card animated fadeIn">
+            <div class="card-body">
+                <h4 class="card-title"> Hospitales</h4>
+
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let hospital of hospitales" [routerLink]="['/hospitales']" class="pointer">
+                            <th><img [src]="hospital.img | imagen:'hospitales'" class="img-50 img-circle"></th>
+                            <th> {{ hospital.nombre }} </th>
+                            <th>
+                                <button class="btn btn-primary" type="button"> <i class="fa fa-edit"></i> </button>
+                            </th>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
