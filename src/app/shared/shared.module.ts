@@ -6,13 +6,15 @@ import { NpagefoundComponent } from './npagefound/npagefound.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 @NgModule({
     declarations: [
         NpagefoundComponent,
         HeaderComponent,
         SidebarComponent,
-        BreadcrumbsComponent
+        BreadcrumbsComponent,
+        ModalUploadComponent
     ],
     imports: [
         RouterModule,
@@ -23,7 +25,8 @@ import { PipesModule } from '../pipes/pipes.module';
         NpagefoundComponent,
         HeaderComponent,
         SidebarComponent,
-        BreadcrumbsComponent
+        BreadcrumbsComponent,
+        ModalUploadComponent
     ],
     providers: [],
 })

@@ -20,14 +20,14 @@ export class UsuarioService {
 
   constructor( public http: HttpClient,
                public router: Router,
-               public _subirArchivoService: SubirArchivoService) { 
-    this.cargaStorage();    
+               public _subirArchivoService: SubirArchivoService) {
+    this.cargaStorage();
   }
-  estaLogueado(){
+  estaLogueado() {
     return ( this.token.length > 5) ? true : false;
   }
-  cargaStorage(){
-    if( localStorage.getItem('token')){
+  cargaStorage() {
+    if ( localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario') );
       this.menu = JSON.parse(localStorage.getItem('menu') );
@@ -40,6 +40,28 @@ export class UsuarioService {
     }
 
   }
+  renuevaToken() {
+    let url = `${URL_SERVICIOS}/login/renuevatoken`;
+    url += '?token=' + this.token;
+
+    return this.http.get( url )
+            .pipe(
+              map( (resp: any) => {
+                this.token = resp.token;
+                localStorage.setItem('token', this.token);
+                console.log('Token renovado');
+                
+
+              } ),
+              catchError( err => {
+                this.router.navigate(['/login']);
+                Swal.fire( 'No se pudo renovar el token',
+                'No fue posible renovar token',
+                'error' );
+                // console.log(err);
+                return throwError(err.message); })
+      ); }
+
   guardarStorage( id: string, token: string, usuario: Usuario, menu: any){
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
